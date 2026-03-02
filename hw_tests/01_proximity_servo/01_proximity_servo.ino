@@ -15,7 +15,7 @@
 
 #define SERVO_PIN 4
 #define FAR_POS 150
-#define CLOSE_POS 60
+#define CLOSE_POS 110
 
 Adafruit_VCNL4030 vcnl;
 Servo servo;
@@ -93,7 +93,7 @@ void setup() {
   // Test distance response curve
   Serial.println();
   Serial.println(F("--- Distance response curve ---"));
-  uint8_t positions[] = {150, 130, 110, 90, 70, 60};
+  uint8_t positions[] = {150, 140, 130, 120, 110, 100};
   for (uint8_t i = 0; i < 6; i++) {
     servo.write(positions[i]);
     delay(400);

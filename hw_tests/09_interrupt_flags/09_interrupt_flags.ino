@@ -18,8 +18,8 @@
 #define NEOPIXEL_PIN 6
 #define NEOPIXEL_COUNT 16
 #define SERVO_PIN 4
-#define FAR_POS 150  // Reliable baseline position
-#define CLOSE_POS 60 // Reliable high-reading position
+#define FAR_POS 150   // Reliable baseline position
+#define CLOSE_POS 110 // Reliable high-reading position
 
 Adafruit_VCNL4030 vcnl;
 Adafruit_NeoPixel pixels(NEOPIXEL_COUNT, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
