@@ -99,7 +99,7 @@ void setup() {
   vcnl.setPSCancellation(0);
 
   // Cleanup
-  servo.write(180);
+  servo.write(150);
   delay(300);
   servo.detach();
 

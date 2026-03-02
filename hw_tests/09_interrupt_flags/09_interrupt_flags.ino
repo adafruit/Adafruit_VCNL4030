@@ -43,7 +43,7 @@ void setup() {
   pixels.begin();
   setAllPixels(0, 0, 0);
   servo.attach(SERVO_PIN);
-  servo.write(180); // Start far
+  servo.write(150); // Start far
   delay(500);
 
   // Initialize sensor
@@ -66,10 +66,10 @@ void setup() {
   Serial.println(F("--- PS Interrupt Test ---"));
 
   // Get baseline readings
-  servo.write(180);
+  servo.write(150);
   delay(500);
   uint16_t psFar = vcnl.readProximity();
-  servo.write(0);
+  servo.write(60);
   delay(500);
   uint16_t psClose = vcnl.readProximity();
   Serial.print(F("  PS Far: "));
@@ -93,7 +93,7 @@ void setup() {
   vcnl.readInterruptFlags();
 
   // Move close to trigger CLOSE flag
-  servo.write(0);
+  servo.write(60);
   delay(300);
   vcnl.readProximity(); // Trigger reading
   delay(100);
@@ -105,7 +105,7 @@ void setup() {
     allPassed = false;
 
   // Move far to trigger AWAY flag
-  servo.write(180);
+  servo.write(150);
   delay(300);
   vcnl.readProximity();
   delay(100);
@@ -174,7 +174,7 @@ void setup() {
 
   // Cleanup
   setAllPixels(0, 0, 0);
-  servo.write(180);
+  servo.write(150);
   delay(300);
   servo.detach();
 

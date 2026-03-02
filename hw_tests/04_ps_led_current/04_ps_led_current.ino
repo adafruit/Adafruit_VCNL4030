@@ -108,7 +108,7 @@ void setup() {
 
   // Reset
   vcnl.setLEDLowCurrent(false);
-  servo.write(180);
+  servo.write(150);
   delay(300);
   servo.detach();
 

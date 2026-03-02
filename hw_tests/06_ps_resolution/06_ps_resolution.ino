@@ -14,7 +14,7 @@
 #include <Wire.h>
 
 #define SERVO_PIN 4
-#define CLOSE_POS 0
+#define CLOSE_POS 60
 
 Adafruit_VCNL4030 vcnl;
 Servo servo;
@@ -97,7 +97,7 @@ void setup() {
   Serial.println();
 
   // Cleanup
-  servo.write(180);
+  servo.write(150);
   delay(300);
   servo.detach();
 
