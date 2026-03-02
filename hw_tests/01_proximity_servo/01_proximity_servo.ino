@@ -94,7 +94,7 @@ void setup() {
   Serial.println();
   Serial.println(F("--- Distance response curve ---"));
   uint8_t positions[] = {150, 140, 130, 120, 110, 100};
-  for (uint8_t i = 0; i < 6; i++) {
+  for (uint8_t i = 0; i < 7; i++) {
     servo.write(positions[i]);
     delay(400);
     uint16_t ps = medianProximity();
