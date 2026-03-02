@@ -1,0 +1,109 @@
+VCNL4030X01 Register Quick Reference
+====================================
+
+COMMAND CODE REGISTER MAP
+-------------------------
+Cmd  | Byte | Name          | R/W | Default | Description
+-----|------|---------------|-----|---------|---------------------------
+0x00 | L    | ALS_CONF1     | R/W | 0x01    | ALS IT, HD, PERS, INT_EN, SD
+0x00 | H    | ALS_CONF2     | R/W | 0x01    | ALS_NS, WHITE_SD
+0x01 | L+H  | ALS_THDH      | R/W | 0x0000  | ALS high threshold (16-bit)
+0x02 | L+H  | ALS_THDL      | R/W | 0x0000  | ALS low threshold (16-bit)
+0x03 | L    | PS_CONF1      | R/W | 0x01    | PS DUTY, PERS, IT, SD
+0x03 | H    | PS_CONF2      | R/W | 0x00    | PS GAIN, HD, NS, INT
+0x04 | L    | PS_CONF3      | R/W | 0x00    | LED_I_LOW, SMART_PERS, AF, TRIG, MS, SC_EN
+0x04 | H    | PS_MS         | R/W | 0x00    | SC_CUR, SP, SPO, LED_I
+0x05 | L+H  | PS_CANC       | R/W | 0x0000  | PS cancellation (16-bit)
+0x06 | L+H  | PS_THDL       | R/W | 0x0000  | PS low threshold (16-bit)
+0x07 | L+H  | PS_THDH       | R/W | 0x0000  | PS high threshold (16-bit)
+0x08 | L+H  | PS_DATA       | R   | -       | PS output (12/16-bit)
+0x09 | L+H  | Reserved      | R   | 0x0000  | -
+0x0A | L+H  | Reserved      | R   | 0x0000  | -
+0x0B | L+H  | ALS_DATA      | R   | -       | ALS output (16-bit)
+0x0C | L+H  | WHITE_DATA    | R   | -       | White channel output (16-bit)
+0x0D | L    | Reserved      | R   | 0x00    | -
+0x0D | H    | INT_FLAG      | R   | 0x00    | Interrupt flags
+0x0E | L    | ID_L          | R   | 0x80    | Device ID LSB
+0x0E | H    | ID_M          | R   | varies  | Device ID MSB (addr variant)
+
+BIT FIELDS
+----------
+
+ALS_CONF1 (0x00_L):
+  [7:5] ALS_IT      - 000=50ms, 001=100ms, 010=200ms, 011=400ms, 1xx=800ms
+  [4]   ALS_HD      - 0=1x range, 1=2x range
+  [3:2] ALS_PERS    - 00=1, 01=2, 10=4, 11=8 persistence
+  [1]   ALS_INT_EN  - 0=disable, 1=enable ALS interrupt
+  [0]   ALS_SD      - 0=power on, 1=shutdown (default=1)
+
+ALS_CONF2 (0x00_H):
+  [7:2] Reserved    - keep 0
+  [1]   ALS_NS      - 0=2x sensitivity, 1=1x sensitivity
+  [0]   WHITE_SD    - 0=power on, 1=shutdown (default=1)
+
+PS_CONF1 (0x03_L):
+  [7:6] PS_DUTY     - 00=1/40, 01=1/80, 10=1/160, 11=1/320
+  [5:4] PS_PERS     - 00=1, 01=2, 10=3, 11=4 persistence
+  [3:1] PS_IT       - 000=1T, 001=1.5T, 010=2T, 011=2.5T, 100=3T, 101=3.5T, 110=4T, 111=8T
+  [0]   PS_SD       - 0=power on, 1=shutdown (default=1)
+
+PS_CONF2 (0x03_H):
+  [7:6] Reserved    - keep 0
+  [5:4] PS_GAIN     - 00/01=two-step, 10=single x8, 11=single x1
+  [3]   PS_HD       - 0=12-bit, 1=16-bit output
+  [2]   PS_NS       - 0=4x sensitivity (two-step), 1=1x sensitivity
+  [1:0] PS_INT      - 00=disable, 01=close, 10=away, 11=both
+
+PS_CONF3 (0x04_L):
+  [7]   LED_I_LOW   - 0=normal, 1=1/10 current
+  [6:5] Reserved    - keep 0
+  [4]   PS_SMART_PERS - 0=disable, 1=enable smart persistence
+  [3]   PS_AF       - 0=normal, 1=active force mode
+  [2]   PS_TRIG     - write 1 to trigger, auto-clears
+  [1]   PS_MS       - 0=normal+int, 1=logic output mode
+  [0]   PS_SC_EN    - 0=off, 1=sunlight cancel on
+
+PS_MS (0x04_H):
+  [7]   Reserved    - keep 0
+  [6:5] PS_SC_CUR   - 00=1x, 01=2x, 10=4x, 11=8x sunlight cancel current
+  [4]   PS_SP       - 0=1x, 1=1.5x sunlight protection
+  [3]   PS_SPO      - 0=output 0x00, 1=output 0xFF in protection mode
+  [2:0] LED_I       - 000=50mA, 001=75mA, 010=100mA, 011=120mA,
+                      100=140mA, 101=160mA, 110=180mA, 111=200mA
+
+INT_FLAG (0x0D_H) - Read-only, clears on read:
+  [7:6] Reserved
+  [5]   ALS_IF_L    - ALS crossed low threshold
+  [4]   ALS_IF_H    - ALS crossed high threshold
+  [3]   Reserved
+  [2]   PS_SPFLAG   - PS sunlight protection active
+  [1]   PS_IF_CLOSE - PS crossed high threshold (approaching)
+  [0]   PS_IF_AWAY  - PS crossed low threshold (moving away)
+
+ID_M (0x0E_H) - Read-only:
+  [7:6] Reserved
+  [5:4] SLAVE_ID    - 00=0x60, 01=0x51, 10=0x40, 11=0x41
+  [3:0] VERSION     - 0000
+
+I2C ADDRESS OPTIONS
+-------------------
+Part Number           | I2C Address (7-bit)
+----------------------|--------------------
+VCNL4030X01-GS08/18   | 0x60
+VCNL40301X01-GS08/18  | 0x51
+VCNL40302X01-GS08/18  | 0x40
+VCNL40303X01-GS08/18  | 0x41
+
+ALS RESOLUTION TABLE
+--------------------
+ALS_IT  | Time  | Resolution   | Max Range
+--------|-------|--------------|----------
+000     | 50ms  | 0.064 lux    | 4192 lux
+001     | 100ms | 0.032 lux    | 2096 lux
+010     | 200ms | 0.016 lux    | 1048 lux
+011     | 400ms | 0.008 lux    | 524 lux
+1xx     | 800ms | 0.004 lux    | 262 lux
+
+Note: ALS_HD=1 doubles range (halves resolution)
+      ALS_NS=1 doubles range (halves resolution)
+      Max possible: 4192 x 2 x 2 = 16,768 lux
