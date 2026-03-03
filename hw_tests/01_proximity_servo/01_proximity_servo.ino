@@ -61,8 +61,8 @@ void setup() {
   }
   Serial.println(F("VCNL4030 initialized"));
 
-  vcnl.enablePS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.enableProx(true);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
   delay(200);
 
   // FAR: reflector away from sensor

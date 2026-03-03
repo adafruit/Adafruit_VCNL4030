@@ -68,10 +68,10 @@ void setup() {
   }
   Serial.println(F("VCNL4030 initialized"));
 
-  vcnl.enablePS(true);
+  vcnl.enableProx(true);
   vcnl.enableALS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
-  vcnl.setPSPersistence(VCNL4030_PS_PERS_1);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxPersistence(VCNL4030_PS_PERS_1);
   vcnl.setALSPersistence(VCNL4030_ALS_PERS_1);
   vcnl.setALSIntegrationTime(VCNL4030_ALS_IT_100MS);
   delay(500);
@@ -90,9 +90,9 @@ void setup() {
   Serial.println(psClose);
 
   // Set low threshold just above far baseline
-  vcnl.setPSLowThreshold(8);
-  vcnl.setPSHighThreshold(psClose / 2);
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_BOTH);
+  vcnl.setProxLowThreshold(8);
+  vcnl.setProxHighThreshold(psClose / 2);
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_BOTH);
 
   Serial.print(F("  Low thresh: 8  High thresh: "));
   Serial.println(psClose / 2);

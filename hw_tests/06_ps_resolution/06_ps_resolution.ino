@@ -68,14 +68,15 @@ void setup() {
   Serial.println(F("Servo at CLOSE position for high readings"));
   Serial.println();
 
-  vcnl.enablePS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA); // High current for strong signal
-  vcnl.setPSGain(VCNL4030_PS_GAIN_SINGLE_8X);
+  vcnl.enableProx(true);
+  vcnl.setProxLEDCurrent(
+      VCNL4030_LED_I_200MA); // High current for strong signal
+  vcnl.setProxGain(VCNL4030_PS_GAIN_SINGLE_8X);
   delay(100);
 
   // Test 12-bit mode (PS_HD=0)
   Serial.println(F("--- 12-bit mode (PS_HD=0) ---"));
-  vcnl.setPSResolution16Bit(false);
+  vcnl.setProxResolution16Bit(false);
   delay(100);
   uint16_t ps12bit = medianProximity();
   Serial.print(F("  Reading: "));
@@ -89,7 +90,7 @@ void setup() {
 
   // Test 16-bit mode (PS_HD=1)
   Serial.println(F("--- 16-bit mode (PS_HD=1) ---"));
-  vcnl.setPSResolution16Bit(true);
+  vcnl.setProxResolution16Bit(true);
   delay(100);
   uint16_t ps16bit = medianProximity();
   Serial.print(F("  Reading: "));

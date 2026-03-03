@@ -66,8 +66,8 @@ void setup() {
   }
   Serial.println(F("VCNL4030 initialized"));
 
-  vcnl.enablePS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.enableProx(true);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
   delay(100);
 
   // Test each duty cycle
@@ -79,7 +79,7 @@ void setup() {
   Serial.println(F("Duty cycle vs proximity:"));
   Serial.println(F("(Lower duty = less power, similar readings expected)"));
   for (uint8_t i = 0; i < 4; i++) {
-    vcnl.setPSDuty(duties[i]);
+    vcnl.setProxDuty(duties[i]);
     delay(100);
     readings[i] = medianProximity();
     Serial.print(F("  "));

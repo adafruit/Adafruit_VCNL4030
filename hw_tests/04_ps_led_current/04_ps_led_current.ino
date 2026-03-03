@@ -70,7 +70,7 @@ void setup() {
   Serial.println(F(" degrees"));
   Serial.println();
 
-  vcnl.enablePS(true);
+  vcnl.enableProx(true);
   vcnl.setLEDLowCurrent(false); // Normal mode first
   delay(100);
 
@@ -82,7 +82,7 @@ void setup() {
 
   Serial.println(F("LED current vs proximity:"));
   for (uint8_t i = 0; i < 3; i++) {
-    vcnl.setLEDCurrent(currents[i]);
+    vcnl.setProxLEDCurrent(currents[i]);
     delay(100);
     readings[i] = medianProximity();
     Serial.print(F("  "));
@@ -94,7 +94,7 @@ void setup() {
 
   // Test LED_I_LOW mode (1/10 current)
   Serial.println(F("--- LED_I_LOW mode test ---"));
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA); // 200mA setting
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA); // 200mA setting
   vcnl.setLEDLowCurrent(false);
   delay(100);
   uint16_t psNormal = medianProximity();

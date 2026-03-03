@@ -42,8 +42,8 @@ void setup() {
   }
   Serial.println(F("VCNL4030 initialized"));
 
-  vcnl.enablePS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.enableProx(true);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
   delay(100);
 
   bool allPassed = true;
@@ -82,7 +82,7 @@ void setup() {
 
   // Trigger a new reading
   Serial.println(F("  Triggering PS reading..."));
-  vcnl.triggerPSReading();
+  vcnl.triggerProxReading();
   delay(100); // Wait for reading to complete
 
   uint16_t psTriggered = vcnl.readProximity();

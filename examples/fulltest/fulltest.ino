@@ -13,7 +13,7 @@ Adafruit_VCNL4030 vcnl;
 uint8_t passCount = 0;
 uint8_t failCount = 0;
 
-void testBool(const __FlashStringHelper *name, bool expected, bool actual) {
+void testBool(const __FlashStringHelper* name, bool expected, bool actual) {
   Serial.print(name);
   Serial.print(F(": "));
   if (expected == actual) {
@@ -29,7 +29,7 @@ void testBool(const __FlashStringHelper *name, bool expected, bool actual) {
   }
 }
 
-void testUint8(const __FlashStringHelper *name, uint8_t expected,
+void testUint8(const __FlashStringHelper* name, uint8_t expected,
                uint8_t actual) {
   Serial.print(name);
   Serial.print(F(": "));
@@ -46,7 +46,7 @@ void testUint8(const __FlashStringHelper *name, uint8_t expected,
   }
 }
 
-void testUint16(const __FlashStringHelper *name, uint16_t expected,
+void testUint16(const __FlashStringHelper* name, uint16_t expected,
                 uint16_t actual) {
   Serial.print(name);
   Serial.print(F(": "));
@@ -168,116 +168,118 @@ void setup() {
 
   // ========== PS Duty Cycle ==========
   Serial.println(F("--- PS Duty Cycle ---"));
-  vcnl.setPSDuty(VCNL4030_PS_DUTY_40);
-  testUint8(F("PS Duty 1/40"), VCNL4030_PS_DUTY_40, vcnl.getPSDuty());
-  vcnl.setPSDuty(VCNL4030_PS_DUTY_80);
-  testUint8(F("PS Duty 1/80"), VCNL4030_PS_DUTY_80, vcnl.getPSDuty());
-  vcnl.setPSDuty(VCNL4030_PS_DUTY_160);
-  testUint8(F("PS Duty 1/160"), VCNL4030_PS_DUTY_160, vcnl.getPSDuty());
-  vcnl.setPSDuty(VCNL4030_PS_DUTY_320);
-  testUint8(F("PS Duty 1/320"), VCNL4030_PS_DUTY_320, vcnl.getPSDuty());
+  vcnl.setProxDuty(VCNL4030_PS_DUTY_40);
+  testUint8(F("PS Duty 1/40"), VCNL4030_PS_DUTY_40, vcnl.getProxDuty());
+  vcnl.setProxDuty(VCNL4030_PS_DUTY_80);
+  testUint8(F("PS Duty 1/80"), VCNL4030_PS_DUTY_80, vcnl.getProxDuty());
+  vcnl.setProxDuty(VCNL4030_PS_DUTY_160);
+  testUint8(F("PS Duty 1/160"), VCNL4030_PS_DUTY_160, vcnl.getProxDuty());
+  vcnl.setProxDuty(VCNL4030_PS_DUTY_320);
+  testUint8(F("PS Duty 1/320"), VCNL4030_PS_DUTY_320, vcnl.getProxDuty());
   Serial.println();
 
   // ========== PS Integration Time ==========
   Serial.println(F("--- PS Integration Time ---"));
-  vcnl.setPSIntegrationTime(VCNL4030_PS_IT_1T);
-  testUint8(F("PS IT 1T"), VCNL4030_PS_IT_1T, vcnl.getPSIntegrationTime());
-  vcnl.setPSIntegrationTime(VCNL4030_PS_IT_2T);
-  testUint8(F("PS IT 2T"), VCNL4030_PS_IT_2T, vcnl.getPSIntegrationTime());
-  vcnl.setPSIntegrationTime(VCNL4030_PS_IT_4T);
-  testUint8(F("PS IT 4T"), VCNL4030_PS_IT_4T, vcnl.getPSIntegrationTime());
-  vcnl.setPSIntegrationTime(VCNL4030_PS_IT_8T);
-  testUint8(F("PS IT 8T"), VCNL4030_PS_IT_8T, vcnl.getPSIntegrationTime());
+  vcnl.setProxIntegrationTime(VCNL4030_PS_IT_1T);
+  testUint8(F("PS IT 1T"), VCNL4030_PS_IT_1T, vcnl.getProxIntegrationTime());
+  vcnl.setProxIntegrationTime(VCNL4030_PS_IT_2T);
+  testUint8(F("PS IT 2T"), VCNL4030_PS_IT_2T, vcnl.getProxIntegrationTime());
+  vcnl.setProxIntegrationTime(VCNL4030_PS_IT_4T);
+  testUint8(F("PS IT 4T"), VCNL4030_PS_IT_4T, vcnl.getProxIntegrationTime());
+  vcnl.setProxIntegrationTime(VCNL4030_PS_IT_8T);
+  testUint8(F("PS IT 8T"), VCNL4030_PS_IT_8T, vcnl.getProxIntegrationTime());
   Serial.println();
 
   // ========== PS Gain ==========
   Serial.println(F("--- PS Gain ---"));
-  vcnl.setPSGain(VCNL4030_PS_GAIN_TWO_STEP);
-  testUint8(F("PS Gain 2-step"), VCNL4030_PS_GAIN_TWO_STEP, vcnl.getPSGain());
-  vcnl.setPSGain(VCNL4030_PS_GAIN_SINGLE_8X);
-  testUint8(F("PS Gain 8x"), VCNL4030_PS_GAIN_SINGLE_8X, vcnl.getPSGain());
-  vcnl.setPSGain(VCNL4030_PS_GAIN_SINGLE_1X);
-  testUint8(F("PS Gain 1x"), VCNL4030_PS_GAIN_SINGLE_1X, vcnl.getPSGain());
+  vcnl.setProxGain(VCNL4030_PS_GAIN_TWO_STEP);
+  testUint8(F("PS Gain 2-step"), VCNL4030_PS_GAIN_TWO_STEP, vcnl.getProxGain());
+  vcnl.setProxGain(VCNL4030_PS_GAIN_SINGLE_8X);
+  testUint8(F("PS Gain 8x"), VCNL4030_PS_GAIN_SINGLE_8X, vcnl.getProxGain());
+  vcnl.setProxGain(VCNL4030_PS_GAIN_SINGLE_1X);
+  testUint8(F("PS Gain 1x"), VCNL4030_PS_GAIN_SINGLE_1X, vcnl.getProxGain());
   Serial.println();
 
   // ========== PS Resolution ==========
   Serial.println(F("--- PS Resolution ---"));
-  vcnl.setPSResolution16Bit(true);
-  testBool(F("PS 16-bit"), true, vcnl.getPSResolution16Bit());
-  vcnl.setPSResolution16Bit(false);
-  testBool(F("PS 12-bit"), false, vcnl.getPSResolution16Bit());
-  vcnl.setPSResolution16Bit(true); // Set back to 16-bit
+  vcnl.setProxResolution16Bit(true);
+  testBool(F("PS 16-bit"), true, vcnl.getProxResolution16Bit());
+  vcnl.setProxResolution16Bit(false);
+  testBool(F("PS 12-bit"), false, vcnl.getProxResolution16Bit());
+  vcnl.setProxResolution16Bit(true); // Set back to 16-bit
   Serial.println();
 
   // ========== PS Low Sensitivity ==========
   Serial.println(F("--- PS Low Sensitivity ---"));
-  vcnl.setPSLowSensitivity(true);
-  testBool(F("PS NS on"), true, vcnl.getPSLowSensitivity());
-  vcnl.setPSLowSensitivity(false);
-  testBool(F("PS NS off"), false, vcnl.getPSLowSensitivity());
+  vcnl.setProxLowSensitivity(true);
+  testBool(F("PS NS on"), true, vcnl.getProxLowSensitivity());
+  vcnl.setProxLowSensitivity(false);
+  testBool(F("PS NS off"), false, vcnl.getProxLowSensitivity());
   Serial.println();
 
   // ========== PS Persistence ==========
   Serial.println(F("--- PS Persistence ---"));
-  vcnl.setPSPersistence(VCNL4030_PS_PERS_1);
-  testUint8(F("PS PERS 1"), VCNL4030_PS_PERS_1, vcnl.getPSPersistence());
-  vcnl.setPSPersistence(VCNL4030_PS_PERS_2);
-  testUint8(F("PS PERS 2"), VCNL4030_PS_PERS_2, vcnl.getPSPersistence());
-  vcnl.setPSPersistence(VCNL4030_PS_PERS_3);
-  testUint8(F("PS PERS 3"), VCNL4030_PS_PERS_3, vcnl.getPSPersistence());
-  vcnl.setPSPersistence(VCNL4030_PS_PERS_4);
-  testUint8(F("PS PERS 4"), VCNL4030_PS_PERS_4, vcnl.getPSPersistence());
+  vcnl.setProxPersistence(VCNL4030_PS_PERS_1);
+  testUint8(F("PS PERS 1"), VCNL4030_PS_PERS_1, vcnl.getProxPersistence());
+  vcnl.setProxPersistence(VCNL4030_PS_PERS_2);
+  testUint8(F("PS PERS 2"), VCNL4030_PS_PERS_2, vcnl.getProxPersistence());
+  vcnl.setProxPersistence(VCNL4030_PS_PERS_3);
+  testUint8(F("PS PERS 3"), VCNL4030_PS_PERS_3, vcnl.getProxPersistence());
+  vcnl.setProxPersistence(VCNL4030_PS_PERS_4);
+  testUint8(F("PS PERS 4"), VCNL4030_PS_PERS_4, vcnl.getProxPersistence());
   Serial.println();
 
   // ========== PS Interrupt Mode ==========
   Serial.println(F("--- PS Interrupt Mode ---"));
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_DISABLE);
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_DISABLE);
   testUint8(F("PS INT disable"), VCNL4030_PS_INT_DISABLE,
-            vcnl.getPSInterruptMode());
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_CLOSE);
+            vcnl.getProxInterruptMode());
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_CLOSE);
   testUint8(F("PS INT close"), VCNL4030_PS_INT_CLOSE,
-            vcnl.getPSInterruptMode());
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_AWAY);
-  testUint8(F("PS INT away"), VCNL4030_PS_INT_AWAY, vcnl.getPSInterruptMode());
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_BOTH);
-  testUint8(F("PS INT both"), VCNL4030_PS_INT_BOTH, vcnl.getPSInterruptMode());
-  vcnl.setPSInterruptMode(VCNL4030_PS_INT_DISABLE);
+            vcnl.getProxInterruptMode());
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_AWAY);
+  testUint8(F("PS INT away"), VCNL4030_PS_INT_AWAY,
+            vcnl.getProxInterruptMode());
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_BOTH);
+  testUint8(F("PS INT both"), VCNL4030_PS_INT_BOTH,
+            vcnl.getProxInterruptMode());
+  vcnl.setProxInterruptMode(VCNL4030_PS_INT_DISABLE);
   Serial.println();
 
   // ========== PS Thresholds ==========
   Serial.println(F("--- PS Thresholds ---"));
-  vcnl.setPSHighThreshold(0xABCD);
-  testUint16(F("PS High Thresh"), 0xABCD, vcnl.getPSHighThreshold());
-  vcnl.setPSLowThreshold(0x9876);
-  testUint16(F("PS Low Thresh"), 0x9876, vcnl.getPSLowThreshold());
+  vcnl.setProxHighThreshold(0xABCD);
+  testUint16(F("PS High Thresh"), 0xABCD, vcnl.getProxHighThreshold());
+  vcnl.setProxLowThreshold(0x9876);
+  testUint16(F("PS Low Thresh"), 0x9876, vcnl.getProxLowThreshold());
   Serial.println();
 
   // ========== PS Smart Persistence ==========
   Serial.println(F("--- PS Smart Persistence ---"));
-  vcnl.setPSSmartPersistence(true);
-  testBool(F("PS Smart Pers on"), true, vcnl.getPSSmartPersistence());
-  vcnl.setPSSmartPersistence(false);
-  testBool(F("PS Smart Pers off"), false, vcnl.getPSSmartPersistence());
+  vcnl.setProxSmartPersistence(true);
+  testBool(F("PS Smart Pers on"), true, vcnl.getProxSmartPersistence());
+  vcnl.setProxSmartPersistence(false);
+  testBool(F("PS Smart Pers off"), false, vcnl.getProxSmartPersistence());
   Serial.println();
 
   // ========== PS Enable ==========
   Serial.println(F("--- PS Enable ---"));
-  vcnl.enablePS(true);
-  testBool(F("PS enabled"), true, vcnl.PSEnabled());
-  vcnl.enablePS(false);
-  testBool(F("PS disabled"), false, vcnl.PSEnabled());
-  vcnl.enablePS(true); // Re-enable
+  vcnl.enableProx(true);
+  testBool(F("PS enabled"), true, vcnl.proxEnabled());
+  vcnl.enableProx(false);
+  testBool(F("PS disabled"), false, vcnl.proxEnabled());
+  vcnl.enableProx(true); // Re-enable
   Serial.println();
 
   // ========== LED Current ==========
   Serial.println(F("--- LED Current ---"));
-  vcnl.setLEDCurrent(VCNL4030_LED_I_50MA);
-  testUint8(F("LED 50mA"), VCNL4030_LED_I_50MA, vcnl.getLEDCurrent());
-  vcnl.setLEDCurrent(VCNL4030_LED_I_100MA);
-  testUint8(F("LED 100mA"), VCNL4030_LED_I_100MA, vcnl.getLEDCurrent());
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
-  testUint8(F("LED 200mA"), VCNL4030_LED_I_200MA, vcnl.getLEDCurrent());
-  vcnl.setLEDCurrent(VCNL4030_LED_I_50MA); // Set back to default
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_50MA);
+  testUint8(F("LED 50mA"), VCNL4030_LED_I_50MA, vcnl.getProxLEDCurrent());
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_100MA);
+  testUint8(F("LED 100mA"), VCNL4030_LED_I_100MA, vcnl.getProxLEDCurrent());
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  testUint8(F("LED 200mA"), VCNL4030_LED_I_200MA, vcnl.getProxLEDCurrent());
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_50MA); // Set back to default
   Serial.println();
 
   // ========== LED Low Current ==========
@@ -290,10 +292,10 @@ void setup() {
 
   // ========== PS Cancellation ==========
   Serial.println(F("--- PS Cancellation ---"));
-  vcnl.setPSCancellation(0x0100);
-  testUint16(F("PS Canc 0x0100"), 0x0100, vcnl.getPSCancellation());
-  vcnl.setPSCancellation(0x0000);
-  testUint16(F("PS Canc 0x0000"), 0x0000, vcnl.getPSCancellation());
+  vcnl.setProxCancellation(0x0100);
+  testUint16(F("PS Canc 0x0100"), 0x0100, vcnl.getProxCancellation());
+  vcnl.setProxCancellation(0x0000);
+  testUint16(F("PS Canc 0x0000"), 0x0000, vcnl.getProxCancellation());
   Serial.println();
 
   // ========== Active Force Mode ==========
@@ -306,10 +308,10 @@ void setup() {
 
   // ========== PS Logic Mode ==========
   Serial.println(F("--- PS Logic Mode ---"));
-  vcnl.enablePSLogicMode(true);
-  testBool(F("Logic mode on"), true, vcnl.PSLogicMode());
-  vcnl.enablePSLogicMode(false);
-  testBool(F("Logic mode off"), false, vcnl.PSLogicMode());
+  vcnl.enableProxLogicMode(true);
+  testBool(F("Logic mode on"), true, vcnl.proxLogicMode());
+  vcnl.enableProxLogicMode(false);
+  testBool(F("Logic mode off"), false, vcnl.proxLogicMode());
   Serial.println();
 
   // ========== Sunlight Cancellation ==========
@@ -370,9 +372,9 @@ void setup() {
   vcnl.setALSLowSensitivity(false);
   vcnl.enableALS(true);
   vcnl.enableWhiteChannel(true);
-  vcnl.enablePS(true);
-  vcnl.setPSResolution16Bit(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_50MA);
+  vcnl.enableProx(true);
+  vcnl.setProxResolution16Bit(true);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_50MA);
 
   delay(200); // Allow sensor to settle
 
@@ -396,11 +398,11 @@ void setup() {
   Serial.print(F("ALS Low: "));
   Serial.println(vcnl.getALSLowFlag());
   Serial.print(F("PS Close: "));
-  Serial.println(vcnl.getPSCloseFlag());
+  Serial.println(vcnl.getProxCloseFlag());
   Serial.print(F("PS Away: "));
-  Serial.println(vcnl.getPSAwayFlag());
+  Serial.println(vcnl.getProxAwayFlag());
   Serial.print(F("PS Sunlight: "));
-  Serial.println(vcnl.getPSSunlightFlag());
+  Serial.println(vcnl.getProxSunlightFlag());
   Serial.println();
 
   Serial.println(F("Test complete!"));

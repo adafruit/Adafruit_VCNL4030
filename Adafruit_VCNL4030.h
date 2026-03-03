@@ -158,29 +158,29 @@ class Adafruit_VCNL4030 {
   uint16_t readWhite();
 
   // PS functions
-  void enablePS(bool enable);
-  bool PSEnabled();
-  void setPSDuty(vcnl4030_ps_duty_t duty);
-  vcnl4030_ps_duty_t getPSDuty();
-  void setPSIntegrationTime(vcnl4030_ps_it_t it);
-  vcnl4030_ps_it_t getPSIntegrationTime();
-  void setPSGain(vcnl4030_ps_gain_t gain);
-  vcnl4030_ps_gain_t getPSGain();
-  void setPSResolution16Bit(bool enable);
-  bool getPSResolution16Bit();
-  void setPSLowSensitivity(bool enable);
-  bool getPSLowSensitivity();
+  void enableProx(bool enable);
+  bool proxEnabled();
+  void setProxDuty(vcnl4030_ps_duty_t duty);
+  vcnl4030_ps_duty_t getProxDuty();
+  void setProxIntegrationTime(vcnl4030_ps_it_t it);
+  vcnl4030_ps_it_t getProxIntegrationTime();
+  void setProxGain(vcnl4030_ps_gain_t gain);
+  vcnl4030_ps_gain_t getProxGain();
+  void setProxResolution16Bit(bool enable);
+  bool getProxResolution16Bit();
+  void setProxLowSensitivity(bool enable);
+  bool getProxLowSensitivity();
   uint16_t readProximity();
 
   // LED current
-  void setLEDCurrent(vcnl4030_led_i_t current);
-  vcnl4030_led_i_t getLEDCurrent();
+  void setProxLEDCurrent(vcnl4030_led_i_t current);
+  vcnl4030_led_i_t getProxLEDCurrent();
   void setLEDLowCurrent(bool enable);
   bool getLEDLowCurrent();
 
   // Crosstalk cancellation
-  void setPSCancellation(uint16_t value);
-  uint16_t getPSCancellation();
+  void setProxCancellation(uint16_t value);
+  uint16_t getProxCancellation();
 
   // ALS interrupts
   void enableALSInterrupt(bool enable);
@@ -193,31 +193,31 @@ class Adafruit_VCNL4030 {
   uint16_t getALSLowThreshold();
 
   // PS interrupts
-  void setPSInterruptMode(vcnl4030_ps_int_t mode);
-  vcnl4030_ps_int_t getPSInterruptMode();
-  void setPSPersistence(vcnl4030_ps_pers_t pers);
-  vcnl4030_ps_pers_t getPSPersistence();
-  void setPSHighThreshold(uint16_t threshold);
-  uint16_t getPSHighThreshold();
-  void setPSLowThreshold(uint16_t threshold);
-  uint16_t getPSLowThreshold();
-  void setPSSmartPersistence(bool enable);
-  bool getPSSmartPersistence();
+  void setProxInterruptMode(vcnl4030_ps_int_t mode);
+  vcnl4030_ps_int_t getProxInterruptMode();
+  void setProxPersistence(vcnl4030_ps_pers_t pers);
+  vcnl4030_ps_pers_t getProxPersistence();
+  void setProxHighThreshold(uint16_t threshold);
+  uint16_t getProxHighThreshold();
+  void setProxLowThreshold(uint16_t threshold);
+  uint16_t getProxLowThreshold();
+  void setProxSmartPersistence(bool enable);
+  bool getProxSmartPersistence();
 
   // Interrupt flags
   uint8_t readInterruptFlags();
   bool getALSHighFlag();
   bool getALSLowFlag();
-  bool getPSCloseFlag();
-  bool getPSAwayFlag();
-  bool getPSSunlightFlag();
+  bool getProxCloseFlag();
+  bool getProxAwayFlag();
+  bool getProxSunlightFlag();
 
   // Advanced PS features
   void enableActiveForceMode(bool enable);
   bool activeForceMode();
-  void triggerPSReading();
-  void enablePSLogicMode(bool enable);
-  bool PSLogicMode();
+  void triggerProxReading();
+  void enableProxLogicMode(bool enable);
+  bool proxLogicMode();
   void enableSunlightCancellation(bool enable);
   bool sunlightCancellationEnabled();
   void setSunlightCancelCurrent(vcnl4030_ps_sc_cur_t cur);

@@ -66,9 +66,9 @@ void setup() {
   }
   Serial.println(F("VCNL4030 initialized"));
 
-  vcnl.enablePS(true);
-  vcnl.setLEDCurrent(VCNL4030_LED_I_200MA);
-  vcnl.setPSCancellation(0); // Start with no cancellation
+  vcnl.enableProx(true);
+  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxCancellation(0); // Start with no cancellation
   delay(100);
 
   // Read baseline with no cancellation
@@ -82,7 +82,7 @@ void setup() {
   Serial.print(F("--- Setting cancellation to "));
   Serial.print(cancelVal);
   Serial.println(F(" ---"));
-  vcnl.setPSCancellation(cancelVal);
+  vcnl.setProxCancellation(cancelVal);
   delay(100);
 
   uint16_t cancelled = medianProximity();
@@ -97,7 +97,7 @@ void setup() {
   Serial.println(expected);
 
   // Reset cancellation
-  vcnl.setPSCancellation(0);
+  vcnl.setProxCancellation(0);
 
   // Cleanup
   servo.write(180);
