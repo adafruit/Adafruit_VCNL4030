@@ -309,7 +309,6 @@ void loop() {
   uint16_t white = vcnl.readWhite();
 
   if (prox == 0xFFFF || als == 0xFFFF || white == 0xFFFF) {
-    Serial.println(F("I2C read error!"));
     delay(500);
     return;
   }
@@ -328,8 +327,17 @@ void loop() {
 
   uint8_t flags = vcnl.readInterruptFlags();
   if (flags) {
-    Serial.print(F("\tFlags: 0x"));
-    Serial.print(flags, HEX);
+    Serial.print(F("\tFlags:"));
+    if (flags & VCNL4030_PROX_IF_CLOSE)
+      Serial.print(F(" CLOSE"));
+    if (flags & VCNL4030_PROX_IF_AWAY)
+      Serial.print(F(" AWAY"));
+    if (flags & VCNL4030_ALS_IF_H)
+      Serial.print(F(" ALS_HI"));
+    if (flags & VCNL4030_ALS_IF_L)
+      Serial.print(F(" ALS_LO"));
+    if (flags & VCNL4030_PROX_SPFLAG)
+      Serial.print(F(" SUNPROT"));
   }
 
   Serial.println();

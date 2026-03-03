@@ -743,6 +743,11 @@ uint8_t Adafruit_VCNL4030::readInterruptFlags() {
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_INT_FLAG, 2, LSBFIRST);
   uint16_t val = int_flag_reg.read();
   _int_flags = (val >> 8) & 0xFF; // High byte contains flags
+  if (_int_flags == 0xFF) {
+    // 0xFF likely means I2C failure, retry once
+    val = int_flag_reg.read();
+    _int_flags = (val >> 8) & 0xFF;
+  }
   return _int_flags;
 }
 

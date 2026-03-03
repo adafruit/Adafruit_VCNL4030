@@ -35,7 +35,6 @@ void loop() {
   uint16_t white = vcnl.readWhite();
 
   if (prox == 0xFFFF || als == 0xFFFF || white == 0xFFFF) {
-    Serial.println(F("I2C read error!"));
     delay(100);
     return;
   }
