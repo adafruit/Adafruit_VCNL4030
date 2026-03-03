@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['vcnl4030_5fals_5fif_5fh',['VCNL4030_ALS_IF_H',['../_adafruit___v_c_n_l4030_8h.html#ae1d72f0524ed4e3bec94fe59b0021169',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fals_5fif_5fl',['VCNL4030_ALS_IF_L',['../_adafruit___v_c_n_l4030_8h.html#a20eb4e8b498eccda026e8d9a51790b00',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fdefault_5faddr',['VCNL4030_DEFAULT_ADDR',['../_adafruit___v_c_n_l4030_8h.html#a66a62473cdff38d8b176f768cad6119d',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fid_5fl_5fexpected',['VCNL4030_ID_L_EXPECTED',['../_adafruit___v_c_n_l4030_8h.html#ae87eb5593c6219d2ecb497a95211611d',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fprox_5fif_5faway',['VCNL4030_PROX_IF_AWAY',['../_adafruit___v_c_n_l4030_8h.html#a827eb8ffe0504e3715c733c1bd09c27e',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fprox_5fif_5fclose',['VCNL4030_PROX_IF_CLOSE',['../_adafruit___v_c_n_l4030_8h.html#aa9246f37510f8e283f3e462b43210d7f',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5fprox_5fspflag',['VCNL4030_PROX_SPFLAG',['../_adafruit___v_c_n_l4030_8h.html#a8c76abc90c592fa91b03bd8cf48168b0',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fals_5fconf',['VCNL4030_REG_ALS_CONF',['../_adafruit___v_c_n_l4030_8h.html#a59ba99586c474b4d743cacfcf0cb83ef',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fals_5fdata',['VCNL4030_REG_ALS_DATA',['../_adafruit___v_c_n_l4030_8h.html#aa080d36843cbf862cf8b620e95caadfe',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fals_5fthdh',['VCNL4030_REG_ALS_THDH',['../_adafruit___v_c_n_l4030_8h.html#a68f8ca47832a2f77a6ae26fea50a31a3',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fals_5fthdl',['VCNL4030_REG_ALS_THDL',['../_adafruit___v_c_n_l4030_8h.html#a3b1758a16527d41079bebe3a4e00e798',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fid',['VCNL4030_REG_ID',['../_adafruit___v_c_n_l4030_8h.html#a4231e093074bfe7362322e5f4f8def36',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fint_5fflag',['VCNL4030_REG_INT_FLAG',['../_adafruit___v_c_n_l4030_8h.html#acd5ce9eaae4c5a1a32d17afe7628ab97',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fcanc',['VCNL4030_REG_PS_CANC',['../_adafruit___v_c_n_l4030_8h.html#ab28033169d9c6f7d84636090ca2a81d8',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fconf1_5f2',['VCNL4030_REG_PS_CONF1_2',['../_adafruit___v_c_n_l4030_8h.html#a12aecc2c2ccf45019ec39407554be29a',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fconf3_5fms',['VCNL4030_REG_PS_CONF3_MS',['../_adafruit___v_c_n_l4030_8h.html#a5041f5d52190c6bbf0bd24c035ecb32b',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fdata',['VCNL4030_REG_PS_DATA',['../_adafruit___v_c_n_l4030_8h.html#ac40945d610d09407161b8c9d9e80de64',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fthdh',['VCNL4030_REG_PS_THDH',['../_adafruit___v_c_n_l4030_8h.html#a60243447a42fcdb8a65ee4eee699f2cd',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fps_5fthdl',['VCNL4030_REG_PS_THDL',['../_adafruit___v_c_n_l4030_8h.html#a6f9636388b29e94c4ede1a58d39fcca8',1,'Adafruit_VCNL4030.h']]],
+  ['vcnl4030_5freg_5fwhite_5fdata',['VCNL4030_REG_WHITE_DATA',['../_adafruit___v_c_n_l4030_8h.html#a1bbe1b835f3fb33392e9a06bd136306a',1,'Adafruit_VCNL4030.h']]]
+];
