@@ -74,19 +74,19 @@ void setup() {
 }
 
 void loop() {
+  Serial.print(F("Prox: "));
+  Serial.print(vcnl.readProximity());
+
   if (intFired) {
     intFired = false;
-    uint16_t prox = vcnl.readProximity();
     uint8_t flags = vcnl.readInterruptFlags();
 
-    Serial.print(F("INT! Prox: "));
-    Serial.print(prox);
-
     if (flags & VCNL4030_PROX_IF_CLOSE)
-      Serial.print(F("  -> CLOSE"));
+      Serial.print(F("  *** IRQ CLOSE ***"));
     if (flags & VCNL4030_PROX_IF_AWAY)
-      Serial.print(F("  -> AWAY"));
-
-    Serial.println();
+      Serial.print(F("  *** IRQ AWAY ***"));
   }
+
+  Serial.println();
+  delay(100);
 }
