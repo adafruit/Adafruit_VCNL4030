@@ -88,6 +88,7 @@ bool Adafruit_VCNL4030::begin(uint8_t i2c_addr, TwoWire* wire) {
 /*!
  * @brief Enable or disable the ambient light sensor
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableALS(bool enable) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -112,6 +113,7 @@ bool Adafruit_VCNL4030::ALSEnabled() {
 /*!
  * @brief Set the ALS integration time
  * @param it Integration time setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSIntegrationTime(vcnl4030_als_it_t it) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -137,6 +139,7 @@ vcnl4030_als_it_t Adafruit_VCNL4030::getALSIntegrationTime() {
 /*!
  * @brief Enable or disable high dynamic range mode
  * @param enable true to enable (2x range), false for normal
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSHighDynamicRange(bool enable) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -162,6 +165,7 @@ bool Adafruit_VCNL4030::getALSHighDynamicRange() {
 /*!
  * @brief Enable or disable low sensitivity mode (ALS_NS)
  * @param enable true for 1x sensitivity, false for 2x sensitivity
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSLowSensitivity(bool enable) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -239,6 +243,7 @@ float Adafruit_VCNL4030::readLux() {
 /*!
  * @brief Enable or disable the white channel
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableWhiteChannel(bool enable) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -276,6 +281,7 @@ uint16_t Adafruit_VCNL4030::readWhite() {
 /*!
  * @brief Enable or disable the proximity sensor
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableProx(bool enable) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -300,6 +306,7 @@ bool Adafruit_VCNL4030::proxEnabled() {
 /*!
  * @brief Set the PS duty cycle
  * @param duty Duty cycle setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxDuty(vcnl4030_prox_duty_t duty) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -324,6 +331,7 @@ vcnl4030_prox_duty_t Adafruit_VCNL4030::getProxDuty() {
 /*!
  * @brief Set the PS integration time
  * @param it Integration time setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxIntegrationTime(vcnl4030_prox_it_t it) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -348,6 +356,7 @@ vcnl4030_prox_it_t Adafruit_VCNL4030::getProxIntegrationTime() {
 /*!
  * @brief Set the PS gain
  * @param gain Gain setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxGain(vcnl4030_prox_gain_t gain) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -373,6 +382,7 @@ vcnl4030_prox_gain_t Adafruit_VCNL4030::getProxGain() {
 /*!
  * @brief Enable or disable 16-bit PS resolution
  * @param enable true for 16-bit, false for 12-bit
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxResolution16Bit(bool enable) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -398,6 +408,7 @@ bool Adafruit_VCNL4030::getProxResolution16Bit() {
 /*!
  * @brief Enable or disable PS low sensitivity mode
  * @param enable true for low sensitivity, false for normal
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxLowSensitivity(bool enable) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -435,6 +446,7 @@ uint16_t Adafruit_VCNL4030::readProximity() {
 /*!
  * @brief Set the LED driving current
  * @param current LED current setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxLEDCurrent(vcnl4030_prox_led_t current) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -460,6 +472,7 @@ vcnl4030_prox_led_t Adafruit_VCNL4030::getProxLEDCurrent() {
 /*!
  * @brief Enable or disable low LED current mode (1/10 of normal)
  * @param enable true for 1/10 current, false for normal
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setLEDLowCurrent(bool enable) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -487,6 +500,7 @@ bool Adafruit_VCNL4030::getLEDLowCurrent() {
 /*!
  * @brief Set the PS cancellation level
  * @param value Cancellation value (subtracted from raw PS reading)
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxCancellation(uint16_t value) {
   Adafruit_BusIO_Register ps_canc_reg =
@@ -509,6 +523,7 @@ uint16_t Adafruit_VCNL4030::getProxCancellation() {
 /*!
  * @brief Enable or disable ALS interrupt
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableALSInterrupt(bool enable) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -533,6 +548,7 @@ bool Adafruit_VCNL4030::ALSInterruptEnabled() {
 /*!
  * @brief Set the ALS interrupt persistence
  * @param pers Persistence setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSPersistence(vcnl4030_als_pers_t pers) {
   Adafruit_BusIO_Register als_conf_reg =
@@ -557,6 +573,7 @@ vcnl4030_als_pers_t Adafruit_VCNL4030::getALSPersistence() {
 /*!
  * @brief Set the ALS high threshold
  * @param threshold High threshold value
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSHighThreshold(uint16_t threshold) {
   Adafruit_BusIO_Register als_thdh_reg =
@@ -577,6 +594,7 @@ uint16_t Adafruit_VCNL4030::getALSHighThreshold() {
 /*!
  * @brief Set the ALS low threshold
  * @param threshold Low threshold value
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setALSLowThreshold(uint16_t threshold) {
   Adafruit_BusIO_Register als_thdl_reg =
@@ -599,6 +617,7 @@ uint16_t Adafruit_VCNL4030::getALSLowThreshold() {
 /*!
  * @brief Set the PS interrupt mode
  * @param mode Interrupt mode setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxInterruptMode(vcnl4030_prox_int_t mode) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -624,6 +643,7 @@ vcnl4030_prox_int_t Adafruit_VCNL4030::getProxInterruptMode() {
 /*!
  * @brief Set the PS interrupt persistence
  * @param pers Persistence setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxPersistence(vcnl4030_prox_pers_t pers) {
   Adafruit_BusIO_Register ps_conf_reg =
@@ -648,6 +668,7 @@ vcnl4030_prox_pers_t Adafruit_VCNL4030::getProxPersistence() {
 /*!
  * @brief Set the PS high threshold
  * @param threshold High threshold value
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxHighThreshold(uint16_t threshold) {
   Adafruit_BusIO_Register ps_thdh_reg =
@@ -668,6 +689,7 @@ uint16_t Adafruit_VCNL4030::getProxHighThreshold() {
 /*!
  * @brief Set the PS low threshold
  * @param threshold Low threshold value
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxLowThreshold(uint16_t threshold) {
   Adafruit_BusIO_Register ps_thdl_reg =
@@ -688,6 +710,7 @@ uint16_t Adafruit_VCNL4030::getProxLowThreshold() {
 /*!
  * @brief Enable or disable PS smart persistence
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setProxSmartPersistence(bool enable) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -768,6 +791,7 @@ bool Adafruit_VCNL4030::getProxSunlightFlag() {
 /*!
  * @brief Enable or disable active force mode
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableActiveForceMode(bool enable) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -791,6 +815,7 @@ bool Adafruit_VCNL4030::activeForceMode() {
 
 /*!
  * @brief Trigger a single PS reading (in active force mode)
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::triggerProxReading() {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -803,6 +828,7 @@ bool Adafruit_VCNL4030::triggerProxReading() {
 /*!
  * @brief Enable or disable PS logic output mode
  * @param enable true for logic output, false for normal+interrupt
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableProxLogicMode(bool enable) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -827,6 +853,7 @@ bool Adafruit_VCNL4030::proxLogicMode() {
 /*!
  * @brief Enable or disable sunlight cancellation
  * @param enable true to enable, false to disable
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::enableSunlightCancellation(bool enable) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -851,6 +878,7 @@ bool Adafruit_VCNL4030::sunlightCancellationEnabled() {
 /*!
  * @brief Set the sunlight cancellation current multiplier
  * @param cur Current multiplier setting
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setSunlightCancelCurrent(vcnl4030_prox_sc_cur_t cur) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -876,6 +904,7 @@ vcnl4030_prox_sc_cur_t Adafruit_VCNL4030::getSunlightCancelCurrent() {
 /*!
  * @brief Enable or disable enhanced sunlight protection (1.5x capability)
  * @param enhanced true for 1.5x capability, false for 1x
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setSunlightProtection(bool enhanced) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
@@ -901,6 +930,7 @@ bool Adafruit_VCNL4030::getSunlightProtection() {
 /*!
  * @brief Set sunlight protect output (0x00 or 0xFF during protection)
  * @param high true for 0xFF output, false for 0x00
+ * @return true if I2C write succeeded, false otherwise
  */
 bool Adafruit_VCNL4030::setSunlightProtectOutput(bool high) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
