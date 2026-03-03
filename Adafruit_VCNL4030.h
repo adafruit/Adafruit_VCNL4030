@@ -142,67 +142,67 @@ class Adafruit_VCNL4030 {
   bool begin(uint8_t i2c_addr = VCNL4030_DEFAULT_ADDR, TwoWire* wire = &Wire);
 
   // ALS functions
-  void enableALS(bool enable);
+  bool enableALS(bool enable);
   bool ALSEnabled();
-  void setALSIntegrationTime(vcnl4030_als_it_t it);
+  bool setALSIntegrationTime(vcnl4030_als_it_t it);
   vcnl4030_als_it_t getALSIntegrationTime();
-  void setALSHighDynamicRange(bool enable);
+  bool setALSHighDynamicRange(bool enable);
   bool getALSHighDynamicRange();
-  void setALSLowSensitivity(bool enable);
+  bool setALSLowSensitivity(bool enable);
   bool getALSLowSensitivity();
   uint16_t readALS();
   float readLux();
 
   // White channel
-  void enableWhiteChannel(bool enable);
+  bool enableWhiteChannel(bool enable);
   bool whiteChannelEnabled();
   uint16_t readWhite();
 
   // PS functions
-  void enableProx(bool enable);
+  bool enableProx(bool enable);
   bool proxEnabled();
-  void setProxDuty(vcnl4030_prox_duty_t duty);
+  bool setProxDuty(vcnl4030_prox_duty_t duty);
   vcnl4030_prox_duty_t getProxDuty();
-  void setProxIntegrationTime(vcnl4030_prox_it_t it);
+  bool setProxIntegrationTime(vcnl4030_prox_it_t it);
   vcnl4030_prox_it_t getProxIntegrationTime();
-  void setProxGain(vcnl4030_prox_gain_t gain);
+  bool setProxGain(vcnl4030_prox_gain_t gain);
   vcnl4030_prox_gain_t getProxGain();
-  void setProxResolution16Bit(bool enable);
+  bool setProxResolution16Bit(bool enable);
   bool getProxResolution16Bit();
-  void setProxLowSensitivity(bool enable);
+  bool setProxLowSensitivity(bool enable);
   bool getProxLowSensitivity();
   uint16_t readProximity();
 
   // LED current
-  void setProxLEDCurrent(vcnl4030_prox_led_t current);
+  bool setProxLEDCurrent(vcnl4030_prox_led_t current);
   vcnl4030_prox_led_t getProxLEDCurrent();
-  void setLEDLowCurrent(bool enable);
+  bool setLEDLowCurrent(bool enable);
   bool getLEDLowCurrent();
 
   // Crosstalk cancellation
-  void setProxCancellation(uint16_t value);
+  bool setProxCancellation(uint16_t value);
   uint16_t getProxCancellation();
 
   // ALS interrupts
-  void enableALSInterrupt(bool enable);
+  bool enableALSInterrupt(bool enable);
   bool ALSInterruptEnabled();
-  void setALSPersistence(vcnl4030_als_pers_t pers);
+  bool setALSPersistence(vcnl4030_als_pers_t pers);
   vcnl4030_als_pers_t getALSPersistence();
-  void setALSHighThreshold(uint16_t threshold);
+  bool setALSHighThreshold(uint16_t threshold);
   uint16_t getALSHighThreshold();
-  void setALSLowThreshold(uint16_t threshold);
+  bool setALSLowThreshold(uint16_t threshold);
   uint16_t getALSLowThreshold();
 
   // PS interrupts
-  void setProxInterruptMode(vcnl4030_prox_int_t mode);
+  bool setProxInterruptMode(vcnl4030_prox_int_t mode);
   vcnl4030_prox_int_t getProxInterruptMode();
-  void setProxPersistence(vcnl4030_prox_pers_t pers);
+  bool setProxPersistence(vcnl4030_prox_pers_t pers);
   vcnl4030_prox_pers_t getProxPersistence();
-  void setProxHighThreshold(uint16_t threshold);
+  bool setProxHighThreshold(uint16_t threshold);
   uint16_t getProxHighThreshold();
-  void setProxLowThreshold(uint16_t threshold);
+  bool setProxLowThreshold(uint16_t threshold);
   uint16_t getProxLowThreshold();
-  void setProxSmartPersistence(bool enable);
+  bool setProxSmartPersistence(bool enable);
   bool getProxSmartPersistence();
 
   // Interrupt flags
@@ -214,18 +214,18 @@ class Adafruit_VCNL4030 {
   bool getProxSunlightFlag();
 
   // Advanced PS features
-  void enableActiveForceMode(bool enable);
+  bool enableActiveForceMode(bool enable);
   bool activeForceMode();
-  void triggerProxReading();
-  void enableProxLogicMode(bool enable);
+  bool triggerProxReading();
+  bool enableProxLogicMode(bool enable);
   bool proxLogicMode();
-  void enableSunlightCancellation(bool enable);
+  bool enableSunlightCancellation(bool enable);
   bool sunlightCancellationEnabled();
-  void setSunlightCancelCurrent(vcnl4030_prox_sc_cur_t cur);
+  bool setSunlightCancelCurrent(vcnl4030_prox_sc_cur_t cur);
   vcnl4030_prox_sc_cur_t getSunlightCancelCurrent();
-  void setSunlightProtection(bool enhanced);
+  bool setSunlightProtection(bool enhanced);
   bool getSunlightProtection();
-  void setSunlightProtectOutput(bool high);
+  bool setSunlightProtectOutput(bool high);
   bool getSunlightProtectOutput();
 
  private:
