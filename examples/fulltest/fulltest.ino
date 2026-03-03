@@ -304,17 +304,27 @@ void setup() {
 }
 
 void loop() {
+  uint16_t prox = vcnl.readProximity();
+  uint16_t als = vcnl.readALS();
+  uint16_t white = vcnl.readWhite();
+
+  if (prox == 0xFFFF || als == 0xFFFF || white == 0xFFFF) {
+    Serial.println(F("I2C read error!"));
+    delay(500);
+    return;
+  }
+
   Serial.print(F("Prox: "));
-  Serial.print(vcnl.readProximity());
+  Serial.print(prox);
 
   Serial.print(F("\tALS: "));
-  Serial.print(vcnl.readALS());
+  Serial.print(als);
 
   Serial.print(F("\tLux: "));
   Serial.print(vcnl.readLux());
 
   Serial.print(F("\tWhite: "));
-  Serial.print(vcnl.readWhite());
+  Serial.print(white);
 
   uint8_t flags = vcnl.readInterruptFlags();
   if (flags) {

@@ -31,13 +31,19 @@ void setup() {
 
 void loop() {
   uint16_t prox = vcnl.readProximity();
-  float lux = vcnl.readLux();
+  uint16_t als = vcnl.readALS();
   uint16_t white = vcnl.readWhite();
+
+  if (prox == 0xFFFF || als == 0xFFFF || white == 0xFFFF) {
+    Serial.println(F("I2C read error!"));
+    delay(100);
+    return;
+  }
 
   Serial.print(F("Proximity: "));
   Serial.print(prox);
   Serial.print(F("  Lux: "));
-  Serial.print(lux);
+  Serial.print(vcnl.readLux());
   Serial.print(F("  White: "));
   Serial.println(white);
 
