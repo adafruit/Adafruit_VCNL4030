@@ -77,7 +77,7 @@ bool Adafruit_VCNL4030::begin(uint8_t i2c_addr, TwoWire* wire) {
 
   // PS: 16-bit mode, 50mA LED current, enable PS
   setProxResolution16Bit(true);
-  setProxLEDCurrent(VCNL4030_PROX_LED_50MA);
+  setProxLEDCurrent(VCNL4030_PROX_LED_200MA);
   enableProx(true);
 
   return true;
