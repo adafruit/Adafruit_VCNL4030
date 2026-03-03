@@ -48,8 +48,8 @@ void setup() {
 
   vcnl.enableProx(true);
   vcnl.setProxLEDCurrent(
-      VCNL4030_LED_I_200MA); // High current for strong signal
-  vcnl.setProxGain(VCNL4030_PS_GAIN_SINGLE_8X);
+      VCNL4030_PROX_LED_200MA); // High current for strong signal
+  vcnl.setProxGain(VCNL4030_PROX_GAIN_SINGLE_8X);
   delay(100);
 
   // Test 12-bit mode (PS_HD=0)

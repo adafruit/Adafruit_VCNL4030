@@ -45,7 +45,7 @@ void setup() {
   Serial.println(F("VCNL4030 initialized"));
 
   vcnl.enableProx(true);
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_200MA);
   vcnl.setProxCancellation(0); // Start with no cancellation
   delay(100);
 

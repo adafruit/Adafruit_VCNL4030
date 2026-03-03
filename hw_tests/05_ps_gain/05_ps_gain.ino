@@ -17,7 +17,7 @@
 Adafruit_VCNL4030 vcnl;
 Servo servo;
 
-uint16_t readGain(vcnl4030_ps_gain_t gain) {
+uint16_t readGain(vcnl4030_prox_gain_t gain) {
   vcnl.setProxGain(gain);
   delay(200);
   vcnl.readProximity();
@@ -47,12 +47,12 @@ void setup() {
   Serial.println(F("VCNL4030 initialized"));
 
   vcnl.enableProx(true);
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_200MA);
   delay(200);
 
-  uint16_t twoStep = readGain(VCNL4030_PS_GAIN_TWO_STEP);
-  uint16_t single1x = readGain(VCNL4030_PS_GAIN_SINGLE_1X);
-  uint16_t single8x = readGain(VCNL4030_PS_GAIN_SINGLE_8X);
+  uint16_t twoStep = readGain(VCNL4030_PROX_GAIN_TWO_STEP);
+  uint16_t single1x = readGain(VCNL4030_PROX_GAIN_SINGLE_1X);
+  uint16_t single8x = readGain(VCNL4030_PROX_GAIN_SINGLE_8X);
 
   Serial.println(F("Gain mode vs proximity (most to least sensitive):"));
   Serial.print(F("  TWO_STEP:  "));

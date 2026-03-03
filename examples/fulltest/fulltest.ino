@@ -105,31 +105,31 @@ void setup() {
   Serial.print(F("Prox Enabled: "));
   Serial.println(vcnl.proxEnabled() ? F("Yes") : F("No"));
 
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_100MA);
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_100MA);
   Serial.print(F("LED Current: "));
   switch (vcnl.getProxLEDCurrent()) {
-    case VCNL4030_LED_I_50MA:
+    case VCNL4030_PROX_LED_50MA:
       Serial.println(F("50mA"));
       break;
-    case VCNL4030_LED_I_75MA:
+    case VCNL4030_PROX_LED_75MA:
       Serial.println(F("75mA"));
       break;
-    case VCNL4030_LED_I_100MA:
+    case VCNL4030_PROX_LED_100MA:
       Serial.println(F("100mA"));
       break;
-    case VCNL4030_LED_I_120MA:
+    case VCNL4030_PROX_LED_120MA:
       Serial.println(F("120mA"));
       break;
-    case VCNL4030_LED_I_140MA:
+    case VCNL4030_PROX_LED_140MA:
       Serial.println(F("140mA"));
       break;
-    case VCNL4030_LED_I_160MA:
+    case VCNL4030_PROX_LED_160MA:
       Serial.println(F("160mA"));
       break;
-    case VCNL4030_LED_I_180MA:
+    case VCNL4030_PROX_LED_180MA:
       Serial.println(F("180mA"));
       break;
-    case VCNL4030_LED_I_200MA:
+    case VCNL4030_PROX_LED_200MA:
       Serial.println(F("200mA"));
       break;
     default:
@@ -137,19 +137,19 @@ void setup() {
       break;
   }
 
-  vcnl.setProxDuty(VCNL4030_PS_DUTY_160);
+  vcnl.setProxDuty(VCNL4030_PROX_DUTY_160);
   Serial.print(F("Duty Cycle: "));
   switch (vcnl.getProxDuty()) {
-    case VCNL4030_PS_DUTY_40:
+    case VCNL4030_PROX_DUTY_40:
       Serial.println(F("1/40"));
       break;
-    case VCNL4030_PS_DUTY_80:
+    case VCNL4030_PROX_DUTY_80:
       Serial.println(F("1/80"));
       break;
-    case VCNL4030_PS_DUTY_160:
+    case VCNL4030_PROX_DUTY_160:
       Serial.println(F("1/160"));
       break;
-    case VCNL4030_PS_DUTY_320:
+    case VCNL4030_PROX_DUTY_320:
       Serial.println(F("1/320"));
       break;
     default:
@@ -157,31 +157,31 @@ void setup() {
       break;
   }
 
-  vcnl.setProxIntegrationTime(VCNL4030_PS_IT_4T);
+  vcnl.setProxIntegrationTime(VCNL4030_PROX_IT_4T);
   Serial.print(F("Integration Time: "));
   switch (vcnl.getProxIntegrationTime()) {
-    case VCNL4030_PS_IT_1T:
+    case VCNL4030_PROX_IT_1T:
       Serial.println(F("1T"));
       break;
-    case VCNL4030_PS_IT_1_5T:
+    case VCNL4030_PROX_IT_1_5T:
       Serial.println(F("1.5T"));
       break;
-    case VCNL4030_PS_IT_2T:
+    case VCNL4030_PROX_IT_2T:
       Serial.println(F("2T"));
       break;
-    case VCNL4030_PS_IT_2_5T:
+    case VCNL4030_PROX_IT_2_5T:
       Serial.println(F("2.5T"));
       break;
-    case VCNL4030_PS_IT_3T:
+    case VCNL4030_PROX_IT_3T:
       Serial.println(F("3T"));
       break;
-    case VCNL4030_PS_IT_3_5T:
+    case VCNL4030_PROX_IT_3_5T:
       Serial.println(F("3.5T"));
       break;
-    case VCNL4030_PS_IT_4T:
+    case VCNL4030_PROX_IT_4T:
       Serial.println(F("4T"));
       break;
-    case VCNL4030_PS_IT_8T:
+    case VCNL4030_PROX_IT_8T:
       Serial.println(F("8T"));
       break;
     default:
@@ -189,16 +189,16 @@ void setup() {
       break;
   }
 
-  vcnl.setProxGain(VCNL4030_PS_GAIN_TWO_STEP);
+  vcnl.setProxGain(VCNL4030_PROX_GAIN_TWO_STEP);
   Serial.print(F("Gain: "));
   switch (vcnl.getProxGain()) {
-    case VCNL4030_PS_GAIN_TWO_STEP:
+    case VCNL4030_PROX_GAIN_TWO_STEP:
       Serial.println(F("Two-step (most sensitive)"));
       break;
-    case VCNL4030_PS_GAIN_SINGLE_8X:
+    case VCNL4030_PROX_GAIN_SINGLE_8X:
       Serial.println(F("Single 8x range (least sensitive)"));
       break;
-    case VCNL4030_PS_GAIN_SINGLE_1X:
+    case VCNL4030_PROX_GAIN_SINGLE_1X:
       Serial.println(F("Single 1x range"));
       break;
     default:
@@ -206,19 +206,19 @@ void setup() {
       break;
   }
 
-  vcnl.setProxPersistence(VCNL4030_PS_PERS_1);
+  vcnl.setProxPersistence(VCNL4030_PROX_PERS_1);
   Serial.print(F("Persistence: "));
   switch (vcnl.getProxPersistence()) {
-    case VCNL4030_PS_PERS_1:
+    case VCNL4030_PROX_PERS_1:
       Serial.println(F("1 sample"));
       break;
-    case VCNL4030_PS_PERS_2:
+    case VCNL4030_PROX_PERS_2:
       Serial.println(F("2 samples"));
       break;
-    case VCNL4030_PS_PERS_3:
+    case VCNL4030_PROX_PERS_3:
       Serial.println(F("3 samples"));
       break;
-    case VCNL4030_PS_PERS_4:
+    case VCNL4030_PROX_PERS_4:
       Serial.println(F("4 samples"));
       break;
     default:
@@ -226,19 +226,19 @@ void setup() {
       break;
   }
 
-  vcnl.setProxInterruptMode(VCNL4030_PS_INT_DISABLE);
+  vcnl.setProxInterruptMode(VCNL4030_PROX_INT_DISABLE);
   Serial.print(F("Interrupt Mode: "));
   switch (vcnl.getProxInterruptMode()) {
-    case VCNL4030_PS_INT_DISABLE:
+    case VCNL4030_PROX_INT_DISABLE:
       Serial.println(F("Disabled"));
       break;
-    case VCNL4030_PS_INT_CLOSE:
+    case VCNL4030_PROX_INT_CLOSE:
       Serial.println(F("Close only"));
       break;
-    case VCNL4030_PS_INT_AWAY:
+    case VCNL4030_PROX_INT_AWAY:
       Serial.println(F("Away only"));
       break;
-    case VCNL4030_PS_INT_BOTH:
+    case VCNL4030_PROX_INT_BOTH:
       Serial.println(F("Close and Away"));
       break;
     default:
@@ -273,19 +273,19 @@ void setup() {
   Serial.print(F("SC Enabled: "));
   Serial.println(vcnl.sunlightCancellationEnabled() ? F("Yes") : F("No"));
 
-  vcnl.setSunlightCancelCurrent(VCNL4030_PS_SC_CUR_1X);
+  vcnl.setSunlightCancelCurrent(VCNL4030_PROX_SC_CUR_1X);
   Serial.print(F("SC Current: "));
   switch (vcnl.getSunlightCancelCurrent()) {
-    case VCNL4030_PS_SC_CUR_1X:
+    case VCNL4030_PROX_SC_CUR_1X:
       Serial.println(F("1x"));
       break;
-    case VCNL4030_PS_SC_CUR_2X:
+    case VCNL4030_PROX_SC_CUR_2X:
       Serial.println(F("2x"));
       break;
-    case VCNL4030_PS_SC_CUR_4X:
+    case VCNL4030_PROX_SC_CUR_4X:
       Serial.println(F("4x"));
       break;
-    case VCNL4030_PS_SC_CUR_8X:
+    case VCNL4030_PROX_SC_CUR_8X:
       Serial.println(F("8x"));
       break;
     default:

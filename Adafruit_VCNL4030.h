@@ -43,11 +43,11 @@
 #define VCNL4030_ID_L_EXPECTED 0x80 ///< Expected ID_L value
 
 // Interrupt flag bit masks (from high byte of 0x0D)
-#define VCNL4030_ALS_IF_L 0x20    ///< ALS crossed low threshold
-#define VCNL4030_ALS_IF_H 0x10    ///< ALS crossed high threshold
-#define VCNL4030_PS_SPFLAG 0x04   ///< PS sunlight protection mode active
-#define VCNL4030_PS_IF_CLOSE 0x02 ///< PS object approaching
-#define VCNL4030_PS_IF_AWAY 0x01  ///< PS object moving away
+#define VCNL4030_ALS_IF_L 0x20      ///< ALS crossed low threshold
+#define VCNL4030_ALS_IF_H 0x10      ///< ALS crossed high threshold
+#define VCNL4030_PROX_SPFLAG 0x04   ///< PS sunlight protection mode active
+#define VCNL4030_PROX_IF_CLOSE 0x02 ///< PS object approaching
+#define VCNL4030_PROX_IF_AWAY 0x01  ///< PS object moving away
 
 /** ALS integration time settings */
 typedef enum {
@@ -68,67 +68,68 @@ typedef enum {
 
 /** PS IRED duty ratio settings */
 typedef enum {
-  VCNL4030_PS_DUTY_40 = 0b00,  ///< 1/40 duty cycle
-  VCNL4030_PS_DUTY_80 = 0b01,  ///< 1/80 duty cycle
-  VCNL4030_PS_DUTY_160 = 0b10, ///< 1/160 duty cycle
-  VCNL4030_PS_DUTY_320 = 0b11, ///< 1/320 duty cycle (lowest power)
-} vcnl4030_ps_duty_t;
+  VCNL4030_PROX_DUTY_40 = 0b00,  ///< 1/40 duty cycle
+  VCNL4030_PROX_DUTY_80 = 0b01,  ///< 1/80 duty cycle
+  VCNL4030_PROX_DUTY_160 = 0b10, ///< 1/160 duty cycle
+  VCNL4030_PROX_DUTY_320 = 0b11, ///< 1/320 duty cycle (lowest power)
+} vcnl4030_prox_duty_t;
 
 /** PS persistence settings */
 typedef enum {
-  VCNL4030_PS_PERS_1 = 0b00, ///< 1 reading
-  VCNL4030_PS_PERS_2 = 0b01, ///< 2 readings
-  VCNL4030_PS_PERS_3 = 0b10, ///< 3 readings
-  VCNL4030_PS_PERS_4 = 0b11, ///< 4 readings
-} vcnl4030_ps_pers_t;
+  VCNL4030_PROX_PERS_1 = 0b00, ///< 1 reading
+  VCNL4030_PROX_PERS_2 = 0b01, ///< 2 readings
+  VCNL4030_PROX_PERS_3 = 0b10, ///< 3 readings
+  VCNL4030_PROX_PERS_4 = 0b11, ///< 4 readings
+} vcnl4030_prox_pers_t;
 
 /** PS integration time settings */
 typedef enum {
-  VCNL4030_PS_IT_1T = 0b000,   ///< 1T
-  VCNL4030_PS_IT_1_5T = 0b001, ///< 1.5T
-  VCNL4030_PS_IT_2T = 0b010,   ///< 2T
-  VCNL4030_PS_IT_2_5T = 0b011, ///< 2.5T
-  VCNL4030_PS_IT_3T = 0b100,   ///< 3T
-  VCNL4030_PS_IT_3_5T = 0b101, ///< 3.5T
-  VCNL4030_PS_IT_4T = 0b110,   ///< 4T
-  VCNL4030_PS_IT_8T = 0b111,   ///< 8T (highest sensitivity)
-} vcnl4030_ps_it_t;
+  VCNL4030_PROX_IT_1T = 0b000,   ///< 1T
+  VCNL4030_PROX_IT_1_5T = 0b001, ///< 1.5T
+  VCNL4030_PROX_IT_2T = 0b010,   ///< 2T
+  VCNL4030_PROX_IT_2_5T = 0b011, ///< 2.5T
+  VCNL4030_PROX_IT_3T = 0b100,   ///< 3T
+  VCNL4030_PROX_IT_3_5T = 0b101, ///< 3.5T
+  VCNL4030_PROX_IT_4T = 0b110,   ///< 4T
+  VCNL4030_PROX_IT_8T = 0b111,   ///< 8T (highest sensitivity)
+} vcnl4030_prox_it_t;
 
 /** PS gain settings */
 typedef enum {
-  VCNL4030_PS_GAIN_TWO_STEP =
+  VCNL4030_PROX_GAIN_TWO_STEP =
       0b00, ///< Two-step mode (most sensitive, ~4x single)
-  VCNL4030_PS_GAIN_SINGLE_8X = 0b10, ///< Single mode x8 range (least sensitive)
-  VCNL4030_PS_GAIN_SINGLE_1X = 0b11, ///< Single mode x1 range
-} vcnl4030_ps_gain_t;
+  VCNL4030_PROX_GAIN_SINGLE_8X =
+      0b10, ///< Single mode x8 range (least sensitive)
+  VCNL4030_PROX_GAIN_SINGLE_1X = 0b11, ///< Single mode x1 range
+} vcnl4030_prox_gain_t;
 
 /** PS interrupt mode settings */
 typedef enum {
-  VCNL4030_PS_INT_DISABLE = 0b00, ///< Interrupt disabled
-  VCNL4030_PS_INT_CLOSE = 0b01,   ///< Interrupt on close
-  VCNL4030_PS_INT_AWAY = 0b10,    ///< Interrupt on away
-  VCNL4030_PS_INT_BOTH = 0b11,    ///< Interrupt on both
-} vcnl4030_ps_int_t;
+  VCNL4030_PROX_INT_DISABLE = 0b00, ///< Interrupt disabled
+  VCNL4030_PROX_INT_CLOSE = 0b01,   ///< Interrupt on close
+  VCNL4030_PROX_INT_AWAY = 0b10,    ///< Interrupt on away
+  VCNL4030_PROX_INT_BOTH = 0b11,    ///< Interrupt on both
+} vcnl4030_prox_int_t;
 
 /** LED driving current settings */
 typedef enum {
-  VCNL4030_LED_I_50MA = 0b000,  ///< 50mA
-  VCNL4030_LED_I_75MA = 0b001,  ///< 75mA
-  VCNL4030_LED_I_100MA = 0b010, ///< 100mA
-  VCNL4030_LED_I_120MA = 0b011, ///< 120mA
-  VCNL4030_LED_I_140MA = 0b100, ///< 140mA
-  VCNL4030_LED_I_160MA = 0b101, ///< 160mA
-  VCNL4030_LED_I_180MA = 0b110, ///< 180mA
-  VCNL4030_LED_I_200MA = 0b111, ///< 200mA
-} vcnl4030_led_i_t;
+  VCNL4030_PROX_LED_50MA = 0b000,  ///< 50mA
+  VCNL4030_PROX_LED_75MA = 0b001,  ///< 75mA
+  VCNL4030_PROX_LED_100MA = 0b010, ///< 100mA
+  VCNL4030_PROX_LED_120MA = 0b011, ///< 120mA
+  VCNL4030_PROX_LED_140MA = 0b100, ///< 140mA
+  VCNL4030_PROX_LED_160MA = 0b101, ///< 160mA
+  VCNL4030_PROX_LED_180MA = 0b110, ///< 180mA
+  VCNL4030_PROX_LED_200MA = 0b111, ///< 200mA
+} vcnl4030_prox_led_t;
 
 /** Sunlight cancellation current multiplier */
 typedef enum {
-  VCNL4030_PS_SC_CUR_1X = 0b00, ///< 1x typical
-  VCNL4030_PS_SC_CUR_2X = 0b01, ///< 2x typical
-  VCNL4030_PS_SC_CUR_4X = 0b10, ///< 4x typical
-  VCNL4030_PS_SC_CUR_8X = 0b11, ///< 8x typical
-} vcnl4030_ps_sc_cur_t;
+  VCNL4030_PROX_SC_CUR_1X = 0b00, ///< 1x typical
+  VCNL4030_PROX_SC_CUR_2X = 0b01, ///< 2x typical
+  VCNL4030_PROX_SC_CUR_4X = 0b10, ///< 4x typical
+  VCNL4030_PROX_SC_CUR_8X = 0b11, ///< 8x typical
+} vcnl4030_prox_sc_cur_t;
 
 /*!
  * @brief Class for interfacing with the VCNL4030 proximity and ALS sensor
@@ -160,12 +161,12 @@ class Adafruit_VCNL4030 {
   // PS functions
   void enableProx(bool enable);
   bool proxEnabled();
-  void setProxDuty(vcnl4030_ps_duty_t duty);
-  vcnl4030_ps_duty_t getProxDuty();
-  void setProxIntegrationTime(vcnl4030_ps_it_t it);
-  vcnl4030_ps_it_t getProxIntegrationTime();
-  void setProxGain(vcnl4030_ps_gain_t gain);
-  vcnl4030_ps_gain_t getProxGain();
+  void setProxDuty(vcnl4030_prox_duty_t duty);
+  vcnl4030_prox_duty_t getProxDuty();
+  void setProxIntegrationTime(vcnl4030_prox_it_t it);
+  vcnl4030_prox_it_t getProxIntegrationTime();
+  void setProxGain(vcnl4030_prox_gain_t gain);
+  vcnl4030_prox_gain_t getProxGain();
   void setProxResolution16Bit(bool enable);
   bool getProxResolution16Bit();
   void setProxLowSensitivity(bool enable);
@@ -173,8 +174,8 @@ class Adafruit_VCNL4030 {
   uint16_t readProximity();
 
   // LED current
-  void setProxLEDCurrent(vcnl4030_led_i_t current);
-  vcnl4030_led_i_t getProxLEDCurrent();
+  void setProxLEDCurrent(vcnl4030_prox_led_t current);
+  vcnl4030_prox_led_t getProxLEDCurrent();
   void setLEDLowCurrent(bool enable);
   bool getLEDLowCurrent();
 
@@ -193,10 +194,10 @@ class Adafruit_VCNL4030 {
   uint16_t getALSLowThreshold();
 
   // PS interrupts
-  void setProxInterruptMode(vcnl4030_ps_int_t mode);
-  vcnl4030_ps_int_t getProxInterruptMode();
-  void setProxPersistence(vcnl4030_ps_pers_t pers);
-  vcnl4030_ps_pers_t getProxPersistence();
+  void setProxInterruptMode(vcnl4030_prox_int_t mode);
+  vcnl4030_prox_int_t getProxInterruptMode();
+  void setProxPersistence(vcnl4030_prox_pers_t pers);
+  vcnl4030_prox_pers_t getProxPersistence();
   void setProxHighThreshold(uint16_t threshold);
   uint16_t getProxHighThreshold();
   void setProxLowThreshold(uint16_t threshold);
@@ -220,8 +221,8 @@ class Adafruit_VCNL4030 {
   bool proxLogicMode();
   void enableSunlightCancellation(bool enable);
   bool sunlightCancellationEnabled();
-  void setSunlightCancelCurrent(vcnl4030_ps_sc_cur_t cur);
-  vcnl4030_ps_sc_cur_t getSunlightCancelCurrent();
+  void setSunlightCancelCurrent(vcnl4030_prox_sc_cur_t cur);
+  vcnl4030_prox_sc_cur_t getSunlightCancelCurrent();
   void setSunlightProtection(bool enhanced);
   bool getSunlightProtection();
   void setSunlightProtectOutput(bool high);

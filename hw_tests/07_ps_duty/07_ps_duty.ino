@@ -45,12 +45,13 @@ void setup() {
   Serial.println(F("VCNL4030 initialized"));
 
   vcnl.enableProx(true);
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_200MA);
   delay(100);
 
   // Test each duty cycle
-  vcnl4030_ps_duty_t duties[] = {VCNL4030_PS_DUTY_40, VCNL4030_PS_DUTY_80,
-                                 VCNL4030_PS_DUTY_160, VCNL4030_PS_DUTY_320};
+  vcnl4030_prox_duty_t duties[] = {VCNL4030_PROX_DUTY_40, VCNL4030_PROX_DUTY_80,
+                                   VCNL4030_PROX_DUTY_160,
+                                   VCNL4030_PROX_DUTY_320};
   const char* names[] = {"1/40", "1/80", "1/160", "1/320"};
   uint16_t readings[4];
 

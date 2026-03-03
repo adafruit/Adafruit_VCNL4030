@@ -77,7 +77,7 @@ bool Adafruit_VCNL4030::begin(uint8_t i2c_addr, TwoWire* wire) {
 
   // PS: 16-bit mode, 50mA LED current, enable PS
   setProxResolution16Bit(true);
-  setProxLEDCurrent(VCNL4030_LED_I_50MA);
+  setProxLEDCurrent(VCNL4030_PROX_LED_50MA);
   enableProx(true);
 
   return true;
@@ -301,7 +301,7 @@ bool Adafruit_VCNL4030::proxEnabled() {
  * @brief Set the PS duty cycle
  * @param duty Duty cycle setting
  */
-void Adafruit_VCNL4030::setProxDuty(vcnl4030_ps_duty_t duty) {
+void Adafruit_VCNL4030::setProxDuty(vcnl4030_prox_duty_t duty) {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_duty =
@@ -313,19 +313,19 @@ void Adafruit_VCNL4030::setProxDuty(vcnl4030_ps_duty_t duty) {
  * @brief Get the current PS duty cycle
  * @return Current duty cycle setting
  */
-vcnl4030_ps_duty_t Adafruit_VCNL4030::getProxDuty() {
+vcnl4030_prox_duty_t Adafruit_VCNL4030::getProxDuty() {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_duty =
       Adafruit_BusIO_RegisterBits(&ps_conf_reg, 2, 6);
-  return (vcnl4030_ps_duty_t)ps_duty.read();
+  return (vcnl4030_prox_duty_t)ps_duty.read();
 }
 
 /*!
  * @brief Set the PS integration time
  * @param it Integration time setting
  */
-void Adafruit_VCNL4030::setProxIntegrationTime(vcnl4030_ps_it_t it) {
+void Adafruit_VCNL4030::setProxIntegrationTime(vcnl4030_prox_it_t it) {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_it =
@@ -337,19 +337,19 @@ void Adafruit_VCNL4030::setProxIntegrationTime(vcnl4030_ps_it_t it) {
  * @brief Get the current PS integration time
  * @return Current integration time setting
  */
-vcnl4030_ps_it_t Adafruit_VCNL4030::getProxIntegrationTime() {
+vcnl4030_prox_it_t Adafruit_VCNL4030::getProxIntegrationTime() {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_it =
       Adafruit_BusIO_RegisterBits(&ps_conf_reg, 3, 1);
-  return (vcnl4030_ps_it_t)ps_it.read();
+  return (vcnl4030_prox_it_t)ps_it.read();
 }
 
 /*!
  * @brief Set the PS gain
  * @param gain Gain setting
  */
-void Adafruit_VCNL4030::setProxGain(vcnl4030_ps_gain_t gain) {
+void Adafruit_VCNL4030::setProxGain(vcnl4030_prox_gain_t gain) {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   // PS_GAIN is bits 5:4 of high byte = bits 13:12 of 16-bit word
@@ -362,12 +362,12 @@ void Adafruit_VCNL4030::setProxGain(vcnl4030_ps_gain_t gain) {
  * @brief Get the current PS gain
  * @return Current gain setting
  */
-vcnl4030_ps_gain_t Adafruit_VCNL4030::getProxGain() {
+vcnl4030_prox_gain_t Adafruit_VCNL4030::getProxGain() {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_gain =
       Adafruit_BusIO_RegisterBits(&ps_conf_reg, 2, 12);
-  return (vcnl4030_ps_gain_t)ps_gain.read();
+  return (vcnl4030_prox_gain_t)ps_gain.read();
 }
 
 /*!
@@ -436,7 +436,7 @@ uint16_t Adafruit_VCNL4030::readProximity() {
  * @brief Set the LED driving current
  * @param current LED current setting
  */
-void Adafruit_VCNL4030::setProxLEDCurrent(vcnl4030_led_i_t current) {
+void Adafruit_VCNL4030::setProxLEDCurrent(vcnl4030_prox_led_t current) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF3_MS, 2, LSBFIRST);
   // LED_I is bits 2:0 of high byte = bits 10:8 of 16-bit word
@@ -449,12 +449,12 @@ void Adafruit_VCNL4030::setProxLEDCurrent(vcnl4030_led_i_t current) {
  * @brief Get the current LED driving current setting
  * @return Current LED current setting
  */
-vcnl4030_led_i_t Adafruit_VCNL4030::getProxLEDCurrent() {
+vcnl4030_prox_led_t Adafruit_VCNL4030::getProxLEDCurrent() {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF3_MS, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits led_i =
       Adafruit_BusIO_RegisterBits(&ps_conf3_ms_reg, 3, 8);
-  return (vcnl4030_led_i_t)led_i.read();
+  return (vcnl4030_prox_led_t)led_i.read();
 }
 
 /*!
@@ -600,7 +600,7 @@ uint16_t Adafruit_VCNL4030::getALSLowThreshold() {
  * @brief Set the PS interrupt mode
  * @param mode Interrupt mode setting
  */
-void Adafruit_VCNL4030::setProxInterruptMode(vcnl4030_ps_int_t mode) {
+void Adafruit_VCNL4030::setProxInterruptMode(vcnl4030_prox_int_t mode) {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   // PS_INT is bits 1:0 of high byte = bits 9:8 of 16-bit word
@@ -613,19 +613,19 @@ void Adafruit_VCNL4030::setProxInterruptMode(vcnl4030_ps_int_t mode) {
  * @brief Get the current PS interrupt mode
  * @return Current interrupt mode setting
  */
-vcnl4030_ps_int_t Adafruit_VCNL4030::getProxInterruptMode() {
+vcnl4030_prox_int_t Adafruit_VCNL4030::getProxInterruptMode() {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_int =
       Adafruit_BusIO_RegisterBits(&ps_conf_reg, 2, 8);
-  return (vcnl4030_ps_int_t)ps_int.read();
+  return (vcnl4030_prox_int_t)ps_int.read();
 }
 
 /*!
  * @brief Set the PS interrupt persistence
  * @param pers Persistence setting
  */
-void Adafruit_VCNL4030::setProxPersistence(vcnl4030_ps_pers_t pers) {
+void Adafruit_VCNL4030::setProxPersistence(vcnl4030_prox_pers_t pers) {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_pers =
@@ -637,12 +637,12 @@ void Adafruit_VCNL4030::setProxPersistence(vcnl4030_ps_pers_t pers) {
  * @brief Get the current PS interrupt persistence
  * @return Current persistence setting
  */
-vcnl4030_ps_pers_t Adafruit_VCNL4030::getProxPersistence() {
+vcnl4030_prox_pers_t Adafruit_VCNL4030::getProxPersistence() {
   Adafruit_BusIO_Register ps_conf_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF1_2, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_pers =
       Adafruit_BusIO_RegisterBits(&ps_conf_reg, 2, 4);
-  return (vcnl4030_ps_pers_t)ps_pers.read();
+  return (vcnl4030_prox_pers_t)ps_pers.read();
 }
 
 /*!
@@ -744,7 +744,7 @@ bool Adafruit_VCNL4030::getALSLowFlag() {
  * @return true if flag is set
  */
 bool Adafruit_VCNL4030::getProxCloseFlag() {
-  return (_int_flags & VCNL4030_PS_IF_CLOSE) != 0;
+  return (_int_flags & VCNL4030_PROX_IF_CLOSE) != 0;
 }
 
 /*!
@@ -752,7 +752,7 @@ bool Adafruit_VCNL4030::getProxCloseFlag() {
  * @return true if flag is set
  */
 bool Adafruit_VCNL4030::getProxAwayFlag() {
-  return (_int_flags & VCNL4030_PS_IF_AWAY) != 0;
+  return (_int_flags & VCNL4030_PROX_IF_AWAY) != 0;
 }
 
 /*!
@@ -760,7 +760,7 @@ bool Adafruit_VCNL4030::getProxAwayFlag() {
  * @return true if flag is set
  */
 bool Adafruit_VCNL4030::getProxSunlightFlag() {
-  return (_int_flags & VCNL4030_PS_SPFLAG) != 0;
+  return (_int_flags & VCNL4030_PROX_SPFLAG) != 0;
 }
 
 // ========== Advanced PS Features ==========
@@ -852,7 +852,7 @@ bool Adafruit_VCNL4030::sunlightCancellationEnabled() {
  * @brief Set the sunlight cancellation current multiplier
  * @param cur Current multiplier setting
  */
-void Adafruit_VCNL4030::setSunlightCancelCurrent(vcnl4030_ps_sc_cur_t cur) {
+void Adafruit_VCNL4030::setSunlightCancelCurrent(vcnl4030_prox_sc_cur_t cur) {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF3_MS, 2, LSBFIRST);
   // PS_SC_CUR is bits 6:5 of high byte = bits 14:13 of 16-bit word
@@ -865,12 +865,12 @@ void Adafruit_VCNL4030::setSunlightCancelCurrent(vcnl4030_ps_sc_cur_t cur) {
  * @brief Get the current sunlight cancellation current multiplier
  * @return Current multiplier setting
  */
-vcnl4030_ps_sc_cur_t Adafruit_VCNL4030::getSunlightCancelCurrent() {
+vcnl4030_prox_sc_cur_t Adafruit_VCNL4030::getSunlightCancelCurrent() {
   Adafruit_BusIO_Register ps_conf3_ms_reg =
       Adafruit_BusIO_Register(i2c_dev, VCNL4030_REG_PS_CONF3_MS, 2, LSBFIRST);
   Adafruit_BusIO_RegisterBits ps_sc_cur =
       Adafruit_BusIO_RegisterBits(&ps_conf3_ms_reg, 2, 13);
-  return (vcnl4030_ps_sc_cur_t)ps_sc_cur.read();
+  return (vcnl4030_prox_sc_cur_t)ps_sc_cur.read();
 }
 
 /*!

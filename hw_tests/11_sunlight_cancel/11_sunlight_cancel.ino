@@ -45,7 +45,7 @@ void setup() {
   Serial.println(F("VCNL4030 initialized"));
 
   vcnl.enableProx(true);
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA);
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_200MA);
   delay(100);
 
   bool allPassed = true;
@@ -94,15 +94,15 @@ void setup() {
 
   // Test 3: Sunlight cancel current settings
   Serial.println(F("--- SC current multiplier ---"));
-  vcnl4030_ps_sc_cur_t levels[] = {VCNL4030_PS_SC_CUR_1X, VCNL4030_PS_SC_CUR_2X,
-                                   VCNL4030_PS_SC_CUR_4X,
-                                   VCNL4030_PS_SC_CUR_8X};
+  vcnl4030_prox_sc_cur_t levels[] = {
+      VCNL4030_PROX_SC_CUR_1X, VCNL4030_PROX_SC_CUR_2X, VCNL4030_PROX_SC_CUR_4X,
+      VCNL4030_PROX_SC_CUR_8X};
   const char* names[] = {"1X", "2X", "4X", "8X"};
 
   for (uint8_t i = 0; i < 4; i++) {
     vcnl.setSunlightCancelCurrent(levels[i]);
     delay(50);
-    vcnl4030_ps_sc_cur_t readBack = vcnl.getSunlightCancelCurrent();
+    vcnl4030_prox_sc_cur_t readBack = vcnl.getSunlightCancelCurrent();
     Serial.print(F("  Set "));
     Serial.print(names[i]);
     Serial.print(F(", read "));

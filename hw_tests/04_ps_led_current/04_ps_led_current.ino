@@ -53,8 +53,9 @@ void setup() {
   delay(100);
 
   // Test different currents
-  vcnl4030_led_i_t currents[] = {VCNL4030_LED_I_200MA, VCNL4030_LED_I_200MA,
-                                 VCNL4030_LED_I_200MA};
+  vcnl4030_prox_led_t currents[] = {VCNL4030_PROX_LED_200MA,
+                                    VCNL4030_PROX_LED_200MA,
+                                    VCNL4030_PROX_LED_200MA};
   const char* names[] = {"50mA", "100mA", "200mA"};
   uint16_t readings[3];
 
@@ -72,7 +73,7 @@ void setup() {
 
   // Test LED_I_LOW mode (1/10 current)
   Serial.println(F("--- LED_I_LOW mode test ---"));
-  vcnl.setProxLEDCurrent(VCNL4030_LED_I_200MA); // 200mA setting
+  vcnl.setProxLEDCurrent(VCNL4030_PROX_LED_200MA); // 200mA setting
   vcnl.setLEDLowCurrent(false);
   delay(100);
   uint16_t psNormal = medianRead(vcnl, READ_PROX);
